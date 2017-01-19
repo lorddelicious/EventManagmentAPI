@@ -2,7 +2,7 @@ package com.EventManagementApi.security;
 
 import java.util.Optional;
 
-import com.svlada.entity.User;
+import com.EventManagementApi.data.entity.User;
 
 /**
  * 

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.EventManagementApi.entity.User;
+import com.EventManagementApi.data.entity.User;
 import com.EventManagementApi.security.UserService;
 import com.EventManagementApi.security.auth.jwt.extractor.TokenExtractor;
 import com.EventManagementApi.security.auth.jwt.verifier.TokenVerifier;
