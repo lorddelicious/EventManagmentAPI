@@ -45,7 +45,8 @@ import com.EventManagementApi.security.model.token.RefreshToken;
 public class RefreshTokenEndpoint {
     @Autowired private JwtTokenFactory tokenFactory;
     @Autowired private JwtSettings jwtSettings;
-    @Autowired private UserService userService;
+    // @Autowired private UserService userService;
+    private UserService userService;
     @Autowired private TokenVerifier tokenVerifier;
     @Autowired @Qualifier("jwtHeaderTokenExtractor") private TokenExtractor tokenExtractor;
     

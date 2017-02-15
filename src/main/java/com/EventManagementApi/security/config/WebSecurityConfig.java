@@ -41,8 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String TOKEN_REFRESH_ENTRY_POINT = "/api/auth/token";
     
     @Autowired private RestAuthenticationEntryPoint authenticationEntryPoint;
-    @Autowired private AuthenticationSuccessHandler successHandler;
-    @Autowired private AuthenticationFailureHandler failureHandler;
+    // @Autowired private AuthenticationSuccessHandler successHandler;
+    // @Autowired private AuthenticationFailureHandler failureHandler;
+    private AuthenticationFailureHandler failureHandler;
 
     @Autowired private JwtAuthenticationProvider jwtAuthenticationProvider;
     

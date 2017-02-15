@@ -29,19 +29,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         basePackages = { "com.EventManagementApi.data.nonuser.repo" })
 public class JPARepositoryNonUser {
     @Bean(name = "springDataSource")
+    @Qualifier("springDataSource")
     @Primary
     @ConfigurationProperties(prefix="spring.datasource")
     public DataSource primaryDataSource() {
         return DataSourceBuilder.create().build();
     }
 
+	// @PersistenceContext(unitName = "nonuser")
+    @Primary
+	@Qualifier("nonUserEntityManagerFactory")
     @Bean(name = "nonUserEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean nonUserEntityManagerFactory(
             EntityManagerFactoryBuilder builder,
             @Qualifier("springDataSource") DataSource springDataSource) {
         return builder
                 .dataSource(primaryDataSource())
-                .packages("com.EventManagementApi.data.primary")
+                .packages("com.EventManagementApi.data.entity")
                 .persistenceUnit("nonuser")
                 .build();
     }
