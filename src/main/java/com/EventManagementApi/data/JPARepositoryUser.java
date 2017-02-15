@@ -27,19 +27,21 @@ import javax.sql.DataSource;
         basePackages = { "com.EventManagementApi.data.user.repo" })
 public class JPARepositoryUser {
     @Bean(name = "springSecondaryDataSource")
-    @Primary
+    @Qualifier("springSecondaryDataSource")
     @ConfigurationProperties(prefix="spring.secondDatasource")
     public DataSource secondaryDataSource() {
         return DataSourceBuilder.create().build();
     }
 
+	// @PersistenceContext(unitName = "user")
+	@Qualifier("userEntityManagerFactory")
     @Bean(name = "userEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean nonUserEntityManagerFactory(
             EntityManagerFactoryBuilder builder,
             @Qualifier("springSecondaryDataSource") DataSource springDataSource) {
         return builder
                 .dataSource(secondaryDataSource())
-                .packages("com.EventManagementApi.data.secondary")
+                .packages("com.EventManagementApi.data.entity")
                 .persistenceUnit("user")
                 .build();
     }
